@@ -5,38 +5,8 @@ tagline: 知识才是一个程序员最虔诚的信仰
 ---
 {% include JB/setup %}
 
-<ul class="posts list-unstyled">
-  {% for post in site.posts limit:5 %}
-    <!-- <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li> -->
-    {% if forloop.index == 1 %}
-    <li>
-      <div class="media">
-        <a class="pull-right" href="{{post.url}}">
-          <img class="media-object" src="{{post.thumbnail}}" width="100" alt="">
-        </a>
-        <div class="media-body">
-          <h5 class="media-heading"><a href="{{post.url}}">{{post.title}}</a> <small class="label label-default">{{ post.date | date: "%Y年%-m月%-d日" }}</small></h5>
-          <p>{{post.description}}</p>
-        </div>
-      </div>
-    </li>
-    {% else %}
-    <li><h5><a href="{{ post.url }}">{{ post.title }}</a> <small class="label label-default">{{ post.date | date: "%Y年%-m月%-d日" }}</small></h5></li>
-    {% endif %}
-    {% comment %}
-    <li>
-      <span>{{ post.date | date_to_string }}</span>
-      <div class="media">
-        <a class="pull-left" href="{{post.url}}">
-          <img class="media-object" src="{{post.thumbnail}}" width="100" alt="">
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading"><a href="{{post.url}}">{{post.title}}</a></h4>
-          <p>{{post.description}}</p>
-        </div>
-      </div>
-    </li>
-    {% endcomment %}
-
+<ul class="posts">
+  {% for post in site.posts %}
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
   {% endfor %}
 </ul>
