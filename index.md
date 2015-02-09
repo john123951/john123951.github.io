@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: 不存在的完美
+tagline: 知识才是一个程序员最虔诚的信仰
 ---
 {% include JB/setup %}
 
