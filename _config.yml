@@ -10,7 +10,6 @@ highlighter: pygments
 # so be sure to set them if your theme uses them.
 #
 title : 熊猫侠的博客
-categories : [lessons, beginner]
 tagline: Site Tagline
 author :
   name : 熊猫侠
