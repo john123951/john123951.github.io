@@ -7,6 +7,9 @@ tagline: 知识才是一个程序员最虔诚的信仰
 
 <ul class="posts">
   {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; 
+    <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+    <p>{{post.description}}</p>
+    </li>
   {% endfor %}
 </ul>
