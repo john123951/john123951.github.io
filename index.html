@@ -29,11 +29,41 @@ comments: false
     </div>
 </section>
 <!-- /.banner -->
+
+<!-- post -->
 <section class="container content">
     <div class="columns">
         <div class="column two-thirds" >
+            <!-- sticky post -->
+            <ol class="repo-list stickie">
+                {% for post in paginator.posts %}
+                {% if post.sticky == true %}
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="{{ post.url }}">『置顶』{{ post.title }}</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        {{ post.excerpt | strip_html | strip }}
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
+                        </span>
+                        {% for cat in post.categories %}
+                        <span class="meta-info">
+                          <span class="octicon octicon-file-directory"></span>
+                          <a href="/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
+                        </span>
+                        {% endfor %}
+                    </p>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ol>
+            <!-- normal post -->
             <ol class="repo-list">
                 {% for post in paginator.posts %}
+                {% if post.sticky != true %}
                 <li class="repo-list-item">
                     <h3 class="repo-list-name">
                       <a href="{{ post.url }}">{{ post.title }}</a>
@@ -53,6 +83,7 @@ comments: false
                         {% endfor %}
                     </p>
                 </li>
+                {% endif %}
                 {% endfor %}
             </ol>
         </div>
@@ -61,6 +92,10 @@ comments: false
             {% include sidebar-popular-repo.html %}
         </div>
     </div>
+    <!-- /post -->
+    
+    <!-- pagination -->
+    {% if paginator.total_pages > 1 %}
     <div class="pagination text-align">
       <div class="btn-group">
         {% if paginator.previous_page %}
@@ -91,6 +126,8 @@ comments: false
         {% endif %}
         </div>
     </div>
+    {% endif %}
     <!-- /pagination -->
+    
 </section>
 <!-- /section.content -->
