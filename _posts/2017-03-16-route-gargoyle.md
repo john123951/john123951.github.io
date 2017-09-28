@@ -6,6 +6,8 @@ description:
 keywords: gargoyle, kuntcp, adbyby
 ---
 
+基于Openwrt的开源路由系统Gargoyle，路由器可以跑Linux应用程序了。
+
 ## 目录
 - [写在前面的话](#写在前面的话)
 - [安装软路由系统](#安装软路由系统)
@@ -25,7 +27,9 @@ keywords: gargoyle, kuntcp, adbyby
 
 
 ### 写在前面的话
-我在之前写的[设计篇](http://www.cnblogs.com/sweetWinne/p/6510261.html)中，提供的软路由方案是pfSense，但经过实践发现在pfSense上折腾ss和dnsmasq实在是费劲，还是使用成熟的openwrt平台来的方便一些。于是我尝试了[openwrt官方kvm版本](https://openwrt.org/)，发现其对虚拟化的支持并不是太好，只支持IDE硬盘和E1000虚拟化网卡，硬盘我倒不在乎，但网卡一定要强劲啊。后来又试了[石像鬼Gargoyle官方版本](https://www.gargoyle-router.com/)，也不尽如人意。
+我在之前写的[设计篇](/2017/03/06/route-design/)中，提供的软路由方案是pfSense，但经过实践发现在pfSense上折腾ss和dnsmasq实在是费劲，还是使用成熟的openwrt平台来的方便一些。
+于是我尝试了[openwrt官方kvm版本](https://openwrt.org/)，发现其对虚拟化的支持并不是太好，只支持IDE硬盘和E1000虚拟化网卡，硬盘我倒不在乎，但网卡一定要强劲啊。
+后来又试了[石像鬼Gargoyle官方版本](https://www.gargoyle-router.com/)，也不尽如人意。
 最后我终于找到了一个[石像鬼Gargoyle修改版本](http://koolshare.cn/thread-59568-1-1.html)，在这里感谢LEAN大神。
 
 
@@ -34,7 +38,7 @@ keywords: gargoyle, kuntcp, adbyby
 #### 物理环境
 物理机拥有两块网卡，使用网卡eth0连接外网网线，负责拨号上网。网卡eth1则连接家中路由器，作AP使用。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314135627932-776246185.png)
+![](/images/blog/2017-03-16-route-gargoyle/infrastructure.png)
 
 #### 下载Gargoyle
 首先下载[石像鬼Gargoyle修改版本](http://koolshare.cn/thread-59568-1-1.html)，并解压出来img文件，使用Winscp或者scp命令将img文件上传到Proxmox主机。
@@ -46,9 +50,9 @@ keywords: gargoyle, kuntcp, adbyby
   `dd if=/tmp/Gargoyle-1.9.0-R6-x64-Core-Edition-combined-squashfs.img of=/dev/mapper/pve-vm--102--disk--1`
 3. 启动虚拟机，这时Gargoyle就跑起来了。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314203414776-45303100.png)
+![](/images/blog/2017-03-16-route-gargoyle/dashboard.png)
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314203615651-478658835.png)
+![](/images/blog/2017-03-16-route-gargoyle/gargogle-main.png)
 
 #### 配置Gargoyle
 登录路由进行管理：
@@ -60,9 +64,9 @@ keywords: gargoyle, kuntcp, adbyby
 
 完成以上步骤后，软路由就配置好了。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314204152901-522336090.png)
+![](/images/blog/2017-03-16-route-gargoyle/web-interface.png)
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314210604151-526778561.png)
+![](/images/blog/2017-03-16-route-gargoyle/web-services.png)
 
 #### 开启原路由的AP模式
 软路由中没有无线网卡，使用原来的路由当作wifi发射器。鉴于不同品牌的路由配置方式也不同，我仅列出openwrt的配置方法。
@@ -80,12 +84,12 @@ IP封锁就不解释了，这里主要说一下DNS污染的原理。
 大家应该知道，浏览网页的第一步是请求DNS服务器，将域名解析成对应的IP地址，而后浏览器默认就会访问这个IP的80端口。
 这里面有什么问题吗，当然，由于DNS查询请求是基于无状态的UDP协议，发出去包后就不管了，接收到第一个返回信息就进行处理，假设一次正常的查询请求需要经过三个路由节点，如果有人在第二个节点提前返回一个刻意伪造的查询结果，那么后返回的真实结果就会被忽略，造成DNS污染。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314113316901-454224651.png)
+![](/images/blog/2017-03-16-route-gargoyle/gfw-dns-pollution.png)
 
 #### 解决方案
 知道了原理后，解决起来就很简单了，针对IP封锁，我们可以借助“加速服务器”来绕过gfw进行访问，同理，DNS查询请求也可以借助“加速服务器”来进行查询。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314113337276-2066173721.png)
+![](/images/blog/2017-03-16-route-gargoyle/fuck-gfw-dns-pollution.png)
 
 #### 实现方式
 1. 使用ss-redir代理8.8.4.4的53端口（google的DNS解析服务器），作为UDP加速服务器。
@@ -96,7 +100,7 @@ IP封锁就不解释了，这里主要说一下DNS污染的原理。
 
 点击上方导航中”服务“----“ShadowsocksR设置”，配置好自己的服务器IP及密码，保存即可完成以上所有的工作(这里估计是有一个bug，脚本里主服务器的配置貌似没有使用，只需要配置备份服务器就可以了)。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170314213530166-588269965.png)
+![](/images/blog/2017-03-16-route-gargoyle/web-shadowsocksr.png)
 
 #### 使用adbyby过滤广告
 adbyby默认是开启的，无需过多设置，如需要增加过滤的域名，只要在自定义列表中增加，并刷新缓存即可。
@@ -129,8 +133,8 @@ opkg install luci-i18n-kcptun-zh-cn_1.2.1-1_all.ipk
 安装完成后，就可以在Gargoyle中看到新的kcptun选项。
 首先在“配置列表”中，将服务器信息配置好（由于环境不同配置也不尽相同，请参考官方文档），而后在“设置”中启用刚刚配置好的客户端，并将客户端程序设置为“/usr/bin/client_linux_amd64”。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170315221020198-320919922.png)
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170315221032604-1600166772.png)
+![](/images/blog/2017-03-16-route-gargoyle/web-kcptun.png)
+![](/images/blog/2017-03-16-route-gargoyle/web-kcptun2.png)
 
 修改shadowsock设置，将服务器地址和端口设置为kcptun的加速通道。
 ```

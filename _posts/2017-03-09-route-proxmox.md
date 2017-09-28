@@ -2,9 +2,11 @@
 layout: post
 title: x86主机搭建家庭智能路由系统 ---- Proxmox虚拟化实现一机多用
 categories: [软路由, virtualization]
-description: 
+description: 通过Web方式管理虚拟化平台
 keywords: proxmox, virtualization
 ---
+
+通过Web方式管理虚拟化平台。
 
 ### Proxmox VE简介
 [Proxmox VE](http://pve.proxmox.com/wiki/Main_Page)(Proxmox Virtual Environment) 是一款完全开源虚拟化管理平台，可以管理QEMU/KVM虚拟机和LXC容器。事实上它只是一个前端管理界面，虚拟化技术由KVM和LXC提供。
@@ -50,11 +52,10 @@ Proxmox支持两种类型的虚拟机，管理界面右上角的“创建虚拟�
 所有配置完成后，点击页面上部的“启动”，虚拟机就跑起来了。
 ![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309225106453-257642440.png)
 
+![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309230105672-1985455593.png)
+
 
 ### 总结
 通过实践，Proxmox VE的易用性还是很高的，主要功能都可以在web中管理，安装虚拟机也非常方便。
 
 性能方面，开机禁用所有虚拟机占用660M内存，CPU不足1%（CPU图中左侧的峰值是我重启前的数据），个人感觉内存占用比较大，考虑到Proxmox还跑了个Debian和Java这个内存占用也还能接受。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309230105672-1985455593.png)
-
-好了，文章至此结束，下一篇中，我会配置pfSense作为软路由进行拨号上网。

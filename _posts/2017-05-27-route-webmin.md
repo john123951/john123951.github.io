@@ -33,11 +33,11 @@ keywords: webmin
 搭建平台前，首先要在Proxmox中创建一台虚拟机，考虑到我只需要跑几个服务，我选择了轻量级容器LXC。
 第一次使用LXC，要先下载模板，选择存储中的"local"--"内容"--"模板"，根据需要下载对应模板。
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170526115022529-2015074028.png)
+![](/images/blog/2017-05-27-route-webmin/proxmox-createvm.png)
 
 有了模板之后，点击Proxmox控制台右上角“创建CT”，设置root密码，选择要使用的模板，CPU，内存等配置。
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170526115110997-103646498.png)
+![](/images/blog/2017-05-27-route-webmin/proxmox-createvm2.png)
 
 虚拟机创建好了，还需要将物理磁盘进行映射，通过阅读[官方文档](https://pve.proxmox.com/wiki/Linux_Container)，在Host机上执行以下命令：
 *注意：LXC容器不可以挂载NFS和块设备*
@@ -52,7 +52,7 @@ qm set 104 -virtio2 /dev/disk/by-id/ata-WDC_WD5000AAKX-001CA0_WD-WMAYUM449361
 ```
 查看虚拟机信息，可以看到磁盘或者分区已经挂载好了。
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170526132417216-829771720.png)
+![](/images/blog/2017-05-27-route-webmin/proxmox-hardware.png)
 
 **这里虽然成功挂载了，实际使用时会提示Read-Only file system，解决方法是在宿主机安装ntfs-3g：**
 ```language
@@ -67,11 +67,11 @@ curl -O http://prdownloads.sourceforge.net/webadmin/webmin-1.840-1.noarch.rpm	#�
 yum install webmin-1.840-1.noarch.rpm
 ```
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170526134903622-1771081403.png)
+![](/images/blog/2017-05-27-route-webmin/proxmox-console.png)
 
 安装完成后，访问 https://webmin:10000 就可以看到Webmin的真容了。
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170526133600732-500043550.png)
+![](/images/blog/2017-05-27-route-webmin/webmin-dashboard.png)
 
 ### 安装Windows共享
 开启Windows共享需要安装Samba，在虚拟机的shell中执行命令：
@@ -79,24 +79,24 @@ yum install webmin-1.840-1.noarch.rpm
 
 安装完成后，点击Webmin中的"Refresh Modules"，就可以看到新添加的Samba模块了。
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170526134333560-323513175.png)
+![](/images/blog/2017-05-27-route-webmin/webmin-servers.png)
 
 ###### 添加Samba用户
 选择Samba模块中的"Convert Users"，将Linux系统中用户转换为Samba用户。
 "Samba Users"中可以修改用户信息。
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170527100150966-414964512.png)
+![](/images/blog/2017-05-27-route-webmin/webmin-samba-users.png)
 
 ##### 添加Samba共享
 点击"Create a new file share"来添加一个共享，勾选"Available"和"Browseable"。
 
 编辑添加好的共享，选择"File Permissions"--"Force Unix user"，输入"root"，以保证有足够的权限访问该文件夹。
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170527101530060-319343414.png)
+![](/images/blog/2017-05-27-route-webmin/webmin-samba-share.png)
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170527101810372-894075691.png)
+![](/images/blog/2017-05-27-route-webmin/webmin-samba-edit-share.png)
 
-![](http://images2015.cnblogs.com/blog/600201/201705/600201-20170527101935466-2105808903.png)
+![](/images/blog/2017-05-27-route-webmin/webmin-samba-permissions.png)
 
 配置好后，点击Samba模块下方"Start Samba Servers"开启服务，Windows中就可以顺利访问共享了。
 

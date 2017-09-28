@@ -13,7 +13,7 @@ keywords: winform
  窗口来回切换，工作时每隔几分钟就要看一眼股市。难道只能同时做一件事情吗？
  现在，一款完全免费、开源的小工具值得你拥有~~
 
-![](http://images0.cnblogs.com/blog2015/600201/201508/191453299411029.png)
+![](/images/blog/2015-08-19-winform-stock-viewer/stock-viewer-thumbnail.png)
 
 ### 特色
  * 默认启动在右下角，浮于其他窗口之上
