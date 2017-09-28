@@ -18,4 +18,4 @@ canvas.getContext('experimental-webgl') == null
 ---
 解决方式：打开Chrome的硬件加速功能
 
-设置页面([chrome://settings/](chrome://settings/)) -- 高级设置 --勾选Use hardware acceleration when available -- 重启Chrome -- 解决
+[设置页面](chrome://settings/) -- 高级设置 --勾选Use hardware acceleration when available -- 重启Chrome -- 解决
