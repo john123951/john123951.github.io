@@ -2,8 +2,7 @@
 layout: about
 title: About
 description: 打码改变世界
-keywords: Zhuang Ma, 马壮
-comments: true
+keywords: sweet
 menu: 关于
 permalink: /about/
 ---
