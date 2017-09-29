@@ -6,9 +6,12 @@ description: some word here
 keywords: webmin
 ---
 
+搭建共享服务器、NAS（网络附加存储），并通过Web方式管理Samba等服务。
+
+
 ### 起因
 过年时从家里的旧电脑上拆下一块机械硬盘（NTFS格式且含有资料），回来后发现笔记本想读硬盘里的资料是件很麻烦的事。
-一个简单的解决方法是，某宝买一个"硬盘底座"就好了，不过想到家里的小主机一直闲着也是闲着，本着折腾和物尽其用的原则，准备自己动手搭一台NAS服务器。
+一个简单的解决方法是，某宝买一个"硬盘底座"就好了，不过想到家里的小主机一直闲着也是闲着，本着物尽其用的原则，准备自己动手搭一台NAS服务器。
 
 设想中的NAS服务器应该有以下特征：
 1. 能读取物理磁盘上的资料。
@@ -45,18 +48,20 @@ keywords: webmin
 ```language
 pct set 104 -mp0 /dev/disk/by-id/ata-WDC_WD5000AAKX-001CA0_WD-WMAYUM449361-part1,mp=/storage
 ```
+
 如果使用KVM，也可以映射物理磁盘（[官方文档](https://pve.proxmox.com/wiki/Physical_disk_to_kvm)），使用以下命令：
 ```bash
 # 将104换成虚拟机ID，by-id后名称替换为自己硬盘
 qm set 104 -virtio2 /dev/disk/by-id/ata-WDC_WD5000AAKX-001CA0_WD-WMAYUM449361
 ```
+
 查看虚拟机信息，可以看到磁盘或者分区已经挂载好了。
 
 ![](/images/blog/2017-05-27-route-webmin/proxmox-hardware.png)
 
 **这里虽然成功挂载了，实际使用时会提示Read-Only file system，解决方法是在宿主机安装ntfs-3g：**
 ```language
-apt-get install ntfs-3g
+yum install ntfs-3g
 ```
 
 ### 安装Webmin
@@ -81,13 +86,13 @@ yum install webmin-1.840-1.noarch.rpm
 
 ![](/images/blog/2017-05-27-route-webmin/webmin-servers.png)
 
-###### 添加Samba用户
+#### 添加Samba用户
 选择Samba模块中的"Convert Users"，将Linux系统中用户转换为Samba用户。
 "Samba Users"中可以修改用户信息。
 
 ![](/images/blog/2017-05-27-route-webmin/webmin-samba-users.png)
 
-##### 添加Samba共享
+#### 添加Samba共享
 点击"Create a new file share"来添加一个共享，勾选"Available"和"Browseable"。
 
 编辑添加好的共享，选择"File Permissions"--"Force Unix user"，输入"root"，以保证有足够的权限访问该文件夹。

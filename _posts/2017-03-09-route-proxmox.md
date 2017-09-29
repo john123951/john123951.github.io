@@ -6,7 +6,8 @@ description: 通过Web方式管理虚拟化平台
 keywords: proxmox, virtualization
 ---
 
-通过Web方式管理虚拟化平台。
+KVM虚拟化，创建多台虚拟机实现一机多用，并提供Web管理界面。
+
 
 ### Proxmox VE简介
 [Proxmox VE](http://pve.proxmox.com/wiki/Main_Page)(Proxmox Virtual Environment) 是一款完全开源虚拟化管理平台，可以管理QEMU/KVM虚拟机和LXC容器。事实上它只是一个前端管理界面，虚拟化技术由KVM和LXC提供。
@@ -20,10 +21,10 @@ keywords: proxmox, virtualization
 `dd if=proxmox-ve_4.4-eb2d6f1e-2.iso of=/dev/sdc bs=4m`
 
 开始安装前，先用网线连接x86主机和路由器（目的是为了我的笔记本可以访问Proxmox的web界面），然后插入U盘进行引导，出现如下安装界面：
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309174740156-1975372171.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-install.png)
 
 按照提示,分别设置root密码，IP地址，直至安装完成并重启，安装完成后的界面如下。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309174851672-1879544313.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-welcome.png)
 
 
 ### 配置Proxmox VE
@@ -31,28 +32,28 @@ keywords: proxmox, virtualization
 我到这里时遇到了第一个坑，打不开网页。仔细检查后发现，Proxmox默认只开启了第一块网卡，而我的主机装有两块网卡，并且连接路由器的网线插到了第二块网卡上，解决办法是将网线插到主板自带的第一块网卡，或者更改网络配置，启用第二块网卡并设置默认路由。
 
 成功登录后界面如下，默认支持中文。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309223118641-2003905449.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-data-center.png)
 
 首先在配置中创建一块虚拟网卡，桥接我的第二张物理网卡，点击左侧“节点”--“System”--“网络”，创建一块“vmbr1”桥接到“eth1”，重启使配置生效。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309223358375-1545041836.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-node.png)
 
 
 ### 安装虚拟机
 Proxmox支持两种类型的虚拟机，管理界面右上角的“创建虚拟机”会创建KVM虚拟机，“创建CT”则是创建OpenVZ虚拟机。
 
 此处使用KVM虚拟机，创建虚拟机前，需要先将ISO镜像文件上传到服务器中，点击左侧“存储”--“local”--“内容”，上传ISO文件。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309223812672-1604382146.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-storage-iso.png)
 
 点击右上角“创建虚拟机”，然后输入一个名字，我这里使用“pfSense”。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309224125141-1804444602.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-vm-create.png)
 
 下一步，根据需要选择操作系统、IOS文件、硬盘大小、CPU核心数、内存大小以及网络，注意选择网络时只可以选择一块网卡，但可以完成后在虚拟机的硬件配置中添加另一块网卡。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309224537750-324818030.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-vm-hardware.png)
 
 所有配置完成后，点击页面上部的“启动”，虚拟机就跑起来了。
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309225106453-257642440.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-vm-console.png)
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170309230105672-1985455593.png)
+![](/images/blog/2017-03-09-route-proxmox/proxmox-vm-dashboard.png)
 
 
 ### 总结

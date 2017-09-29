@@ -6,24 +6,7 @@ description:
 keywords: gargoyle, kuntcp, adbyby
 ---
 
-基于Openwrt的开源路由系统Gargoyle，路由器可以跑Linux应用程序了。
-
-## 目录
-- [写在前面的话](#写在前面的话)
-- [安装软路由系统](#安装软路由系统)
-    - [物理环境](#物理环境)
-    - [下载Gargoyle](#下载gargoyle)
-    - [安装Gargoyle](#安装gargoyle)
-    - [配置Gargoyle](#配置gargoyle)
-    - [开启原路由的AP模式](#开启原路由的ap模式)
-- [科学上网](#科学上网)
-    - [DNS污染原理](#dns污染原理)
-    - [解决方案](#解决方案)
-    - [实现方式](#实现方式)
-    - [使用adbyby过滤广告](#使用adbyby过滤广告)
-    - [KMS服务器](#kms服务器)
-    - [使用kuntcp进行双边加速](#使用kcptun进行双边加速)
-- [总结](#总结)
+安装Gargoyle操作系统，路由器照样可以跑Linux应用程序。
 
 
 ### 写在前面的话
@@ -151,7 +134,7 @@ opkg install luci-i18n-kcptun-zh-cn_1.2.1-1_all.ipk
 
 最后重启路由，就可以享受到高速网络的快感了。
 
-![](http://images2015.cnblogs.com/blog/600201/201703/600201-20170315221335979-184061066.png)
+![](/images/blog/2017-03-16-route-gargoyle/youtube-speed.png)
 
 
 ### 总结
