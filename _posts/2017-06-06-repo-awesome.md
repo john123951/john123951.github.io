@@ -13,6 +13,8 @@ sticky: true
 ### python pip
 ```
 # /etc/pip.conf
+# ~/.pip/pip.conf    # unix
+# %HOME%\pip\pip.ini # windows
 [global]
 trusted-host =  mirrors.aliyun.com
 index-url = http://mirrors.aliyun.com/pypi/simple
