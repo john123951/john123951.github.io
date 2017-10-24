@@ -22,6 +22,8 @@ netsh int ter set state enterpriseclient
 #### 参考资料
 > https://blog.felixc.at/2010/04/install-teredo-ipv6/
 > http://test-ipv6.com/
+> [[IPV6] 开启 Teredo 之微软官方教程](https://github.com/XX-net/XX-Net/issues/7156)
+> https://github.com/XX-net/XX-Net/issues/6918
 
 公共Teredo服务器地址，若无法连通可替换为一下列表中的值：
 * teredo.remlab.net / teredo-debian.remlab.net (法国) (Miredo 默认设置)
