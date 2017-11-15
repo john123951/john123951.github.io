@@ -14,7 +14,7 @@ iphlpsvc (IP Helper)
 netsh int teredo show state
 
 ### 更改服务器地址
-netsh interface teredo set state server=teredo.remlab.net
+netsh interface teredo set state server=teredo2.remlab.net
 
 #### 解决"客户端位于托管网络中"
 netsh int ter set state enterpriseclient
@@ -31,3 +31,6 @@ netsh int ter set state enterpriseclient
 * teredo.ipv6.microsoft.com (美国 雷蒙德) (Windows XP/2003/Vista/7/2008 系统默认设置)
 * teredo.ngix.ne.kr (韩国)
 * teredo.managemydedi.com (美国 芝加哥)
+* teredo.remlab.net
+* teredo2.remlab.net
+* teredo.iks-jena.de
