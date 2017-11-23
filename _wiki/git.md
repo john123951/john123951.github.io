@@ -416,3 +416,15 @@ export LESSCHARSET=utf-8
 #### git diff 中文乱码
 
 只在 Windows 下遇到，目前尚未找到有效办法。
+
+
+#### 查看所有分支
+`git branch -a`
+
+#### 删除远程分支
+```
+# 在Git v1.7.0 之后，可以使用这种语法删除远程分支
+git push origin --delete <branchName>
+
+git push origin :<branchName>
+```
