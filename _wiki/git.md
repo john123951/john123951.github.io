@@ -428,3 +428,11 @@ git push origin --delete <branchName>
 
 git push origin :<branchName>
 ```
+
+#### 使用ssh协议
+```
+# 1、增加了ssh://
+# 2、增加了端口号
+# 3、把用户名前面的冒号改成了斜杠(/)
+git clone ssh://git@10.0.0.1:2222/root/test.git
+```
