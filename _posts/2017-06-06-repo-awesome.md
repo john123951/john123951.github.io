@@ -36,5 +36,25 @@ bundle config 'mirror.https://rubygems.org' 'http://mirrors.aliyun.com/rubygems/
 ### alpine
 ```
 # /etc/apk/repositories
-http://mirrors.ustc.edu.cn/alpine/v3.4/main/
+https://mirrors.aliyun.com/alpine/v3.4/main/
 ```
+
+### CentOS 7
+```
+# 备份
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+
+# 安装阿里云镜像
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+
+# EPEL
+mv /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel.repo.backup
+mv /etc/yum.repos.d/epel-testing.repo /etc/yum.repos.d/epel-testing.repo.backup
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
+
+# Nux Dextop
+# http://li.nux.ro/repos.html
+rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
+```
+
+
