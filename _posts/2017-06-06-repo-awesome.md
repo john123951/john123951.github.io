@@ -57,4 +57,20 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 rpm -Uvh http://li.nux.ro/download/nux/dextop/el7/x86_64/nux-dextop-release-0-5.el7.nux.noarch.rpm
 ```
 
+### Arch
+```
+# /etc/pacman.conf
+[archlinuxcn]
+SigLevel = Optional TrustAll
+# Server = http://repo.archlinuxcn.org/$arch
+Server = https://mirror.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+
+[repo-ck]						
+# Server = http://repo-ck.com/$arch	
+# https://mirror.tuna.tsinghua.edu.cn/help/repo-ck/
+Server = https://mirrors.tuna.tsinghua.edu.cn/repo-ck/$arch
+
+
+```
+
 
