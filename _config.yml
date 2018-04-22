@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: http://blog.lovewinne.com
+url: https://blog.lovewinne.com
 date_format: "ordinal"
 title: 不存在的完美
 subtitle: "知识，才是一个程序猿最虔诚的信仰"
