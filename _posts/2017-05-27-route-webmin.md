@@ -47,6 +47,7 @@ keywords: webmin
 
 ```language
 pct set 104 -mp0 /dev/disk/by-id/ata-WDC_WD5000AAKX-001CA0_WD-WMAYUM449361-part1,mp=/storage
+pct set 104 -mp0 /dev/disk/by-id/ata-WDC_WD5000AAKX-001CA0_WD-WMAYUM449361-part1(windows)
 ```
 
 如果使用KVM，也可以映射物理磁盘（[官方文档](https://pve.proxmox.com/wiki/Physical_disk_to_kvm)），使用以下命令：
