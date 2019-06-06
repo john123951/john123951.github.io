@@ -6,18 +6,105 @@ description:
 keywords: NAS, design
 ---
 
-> [Proxmox VE 让硬盘休眠的办法](https://blog.myds.cloud/archives/proxmox-ve-spin-down-hard-disk.html)
+### 数据存储策略
+首先将存储区域划分为两部分：安全存储区域、普通存储区域
+- 安全存储区域：存储重要数据，定时自动备份，保证数据不丢失。例如：照片、文档类
+- 普通存储区域：存储普通数据，数据丢失不会产生太大影响。例如：下载的视频、压缩包类
 
-### 数据安全性
+由于目前存储的需求不大，故只安装了两块500G硬盘，每块硬盘划出100G空间做RAID1，剩下400G+400G=800G空间存储普通文件。
+[图片]
 
-### 数据备份方案
+
+### 搭建RAID1
+| RAID 类型 | 说明 |
+| --------- | ---- |
+
+#### 第一步：划分磁盘分区
+将 `/dev/sdb` `/dev/sdc` 两块硬盘均按以下方式划分分区。
+
+```
+# 创建第一个分区：100G RAID，依次输入以下命令
+# n 创建新分区
+# p 主分区
+# +100G 空间大小
+# t 改变分区类型
+# fd Linux RAID类型
+fdisk /dev/sdb
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p):
+
+Using default response p.
+Partition number (1-4, default 1):
+First sector (2048-976773167, default 2048):
+Last sector, +sectors or +size{K,M,G,T,P} (2048-976773167, default 976773167): +100G
+
+Created a new partition 1 of type 'Linux' and of size 100 GiB.
+
+Command (m for help): t
+Selected partition 1
+Partition type (type L to list all types): fd
+Changed type of partition 'Linux' to 'Linux raid autodetect'.
+```
+```
+# 剩余空间创建第二个分区，输入 `n` 命令后依次回车
+Command (m for help): n
+Partition type
+   p   primary (1 primary, 0 extended, 3 free)
+   e   extended (container for logical partitions)
+Select (default p):
+
+Using default response p.
+Partition number (2-4, default 2):
+First sector (209717248-976773167, default 209717248):
+Last sector, +sectors or +size{K,M,G,T,P} (209717248-976773167, default 976773167):
+
+Created a new partition 2 of type 'Linux' and of size 365.8 GiB.
+```
+```
+# 输入 `p` 命令查看创建好的分区
+Command (m for help): p
+
+Disk /dev/sdb: 465.8 GiB, 500107862016 bytes, 976773168 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xfbc4f911
+
+Device     Boot     Start       End   Sectors   Size Id Type
+/dev/sdb1            2048 209717247 209715200   100G fd Linux raid autodetect
+/dev/sdb2       209717248 976773167 767055920 365.8G 83 Linux
+
+# 输入 `w` 保存修改并退出
+```
+
+#### 组建 Linux RAID1
+```
+# 使用 `/dev/sdb` 和 `/dev/sdc` 创建RAID1
+mdadm --create  /dev/md0 --level=1 --chunk=32 /dev/sd[bc]1
+```
+
+
+### LVM
+
+
+### 虚拟机连接存储卷
+
 
 codes -- pc -- gogs -- github
 photos -- mobile -- ftp -- encrypt -- gzip -- baidu
 
 ### 解决 Proxmox VE 无法硬盘休眠问题
+> [Proxmox VE 让硬盘休眠的办法](https://blog.myds.cloud/archives/proxmox-ve-spin-down-hard-disk.html)
 PVE下默认启动的状态服务（pvestatd）会不停读取硬盘信息，导致硬盘休眠后马上被唤醒。
 解决办法是将这个服务停掉（pvestatd），后果就是首页不会再更新状态了，比如cpu，网卡负载等状态信息。
+
+修改/etc/lvm/lvm.conf文件
+设置use_lvmetad = 1 或者 global_filter = [ "r|/dev/zd.*|", "r|/dev/mapper/pve-.*|", "r|/dev/disk/by-id/ata-WDC*|" ]
 
 1. 硬盘未休眠
 `hdparm -C /dev/sdb` 或 `smartctl -i -n standby /dev/sdb`
