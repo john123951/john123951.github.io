@@ -138,6 +138,14 @@ PVE下默认启动的状态服务（pvestatd）会不停读取硬盘信息，导
 6. 查看硬盘温度
 `hddtemp /dev/sdb`
 
+### 禁用LVM扫描
+```
+# vi /etc/lvm/lvm.conf
+use_lvmetad = 1
+
+pvscan --cache
+```
+
 
 
 ### Nextcloud
