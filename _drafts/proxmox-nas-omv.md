@@ -14,4 +14,10 @@ keywords: keyword1, keyword2
 omv-extras.org
 
 
+#### 存储
+qm set 100 -virtio1 /dev/raid1VG/raid1
+qm set 100 -virtio2 /dev/storageVG/storage
+
+
+
 

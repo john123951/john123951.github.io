@@ -144,6 +144,13 @@ global_filter = [ "r|/dev/zd.*|", "r|/dev/mapper/pve-.*|" "r|/dev/mapper/.*-(vm|
 ```
 
 5. 配置自动休眠
+```shell
+# manual
+hdparm -S 240 /dev/sd[bcd]
+
+# autostart
+```
+
 
 6. 查看硬盘温度
 `hddtemp /dev/sdb`
