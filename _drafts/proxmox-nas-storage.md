@@ -83,9 +83,14 @@ Device     Boot     Start       End   Sectors   Size Id Type
 ```
 
 #### 组建 Linux RAID1
+> https://www.howtoing.com/manage-software-raid-devices-in-linux-with-mdadm/
+
 ```
 # 使用 `/dev/sdb` 和 `/dev/sdc` 创建RAID1
 mdadm --create  /dev/md0 --level=1 --chunk=32 /dev/sd[bc]1
+
+# 查询Raid 状态
+mdadm --detail /dev/md0
 ```
 
 
@@ -100,11 +105,16 @@ photos -- mobile -- ftp -- encrypt -- gzip -- baidu
 
 ### 解决 Proxmox VE 无法硬盘休眠问题
 > [Proxmox VE 让硬盘休眠的办法](https://blog.myds.cloud/archives/proxmox-ve-spin-down-hard-disk.html)
+> [hdparm 服务](https://wiki.archlinux.org/index.php/Hdparm)
 PVE下默认启动的状态服务（pvestatd）会不停读取硬盘信息，导致硬盘休眠后马上被唤醒。
 解决办法是将这个服务停掉（pvestatd），后果就是首页不会再更新状态了，比如cpu，网卡负载等状态信息。
 
+**
 修改/etc/lvm/lvm.conf文件
 设置use_lvmetad = 1 或者 global_filter = [ "r|/dev/zd.*|", "r|/dev/mapper/pve-.*|", "r|/dev/disk/by-id/ata-WDC*|" ]
+**
+global_filter = [ "r|/dev/zd.*|", "r|/dev/mapper/pve-.*|" "r|/dev/mapper/.*-(vm|base)--[0-9]+--disk--[0-9]+|", "r|/dev/md.*|", "r|/dev/raid1VG.*|", "r|/dev/storageVG.*|", "r|/dev/sd[bc]|"]
+
 
 1. 硬盘未休眠
 `hdparm -C /dev/sdb` 或 `smartctl -i -n standby /dev/sdb`
@@ -134,9 +144,24 @@ PVE下默认启动的状态服务（pvestatd）会不停读取硬盘信息，导
 ```
 
 5. 配置自动休眠
+```shell
+# manual
+hdparm -S 240 /dev/sd[bcd]
+
+# autostart
+```
+
 
 6. 查看硬盘温度
 `hddtemp /dev/sdb`
+
+### 禁用LVM扫描
+```
+# vi /etc/lvm/lvm.conf
+use_lvmetad = 1
+
+pvscan --cache
+```
 
 
 
