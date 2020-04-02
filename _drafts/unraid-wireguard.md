@@ -54,8 +54,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 首先进行安装，过程非常简单，“Community Applications” 中搜索 “WireGuard” 并进行安装。
 
-**（注意：unRAID至少需要6.8.1，否则无法安装WireGuard，低版本的请自行百度升级）** 
-
+**（注意：unRAID至少需要6.8.1，否则无法安装WireGuard，低版本的请自行百度升级）**
 **（注意：关于第三方库 Community Applications，安装教程请参看往期文章）**
 
 
@@ -72,7 +71,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-安装完成后，首先要进行配置，点击："Settings" -- "VPN Manager" 进入管理。
+安装完成后，首先进行配置，点击："Settings" -- "VPN Manager" 进入管理。
 
 第一步，填写WireGuard名字。
 
@@ -104,7 +103,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-经过以上几个步骤，服务端就已经设置好了，记得开启路由器的 51820 端口映射（由于不同路由配置方式不同，不详细说明），这样外网才可以连接到 WireGuard 服务。
+经过以上几个步骤，服务端就已经设置好了，记得开启路由器的 51820 端口映射（由于不同路由配置方式不同，这里不再详细说明），这样外网才可以连接到 WireGuard 服务。
 
 
 
@@ -116,9 +115,11 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 
 
-第一步，下载 TunSafe (https://tunsafe.com/)。
+第一步，下载 TunSafe (https://tunsafe.com/)，备用下载 (链接: https://pan.baidu.com/s/1o7KufNPR1Dto-5EO96SyiA 提取码: u5n9)。
 
-下载后看到有一个“Config”文件夹，进入后复制一份配置文件，并使用“记事本”打开编辑。
+
+
+下载后会看到有一个“Config”文件夹，进入文件夹，复制一份配置文件，并使用“记事本”打开编辑。
 
 
 
@@ -136,6 +137,8 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 这里特别说明一下，
 
+PrivateKey 和 PublicKey 表示身份秘钥，可以使用unRAID的界面生成，然后填写到这里，注意密钥是成对生成的，每次都要将 Pri 和 Pub 同时记录下来。
+
 Endpoint 表示需要连接的服务器地址，也就是NAS的公网IP地址（下文会使用域名代替IP）。
 
 AllowedIPs 表示需要将哪些地址转发到VPN，不确定的朋友直接用（**192.168.0.0/16, 10.0.0.0/8**）。
@@ -144,7 +147,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-第三步，开启连接。
+第三步，开启连接，成功接入内网。
 
 
 
@@ -154,7 +157,9 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 手机端的配置方式与 Win平台大体相同，这里就不做详细介绍了。
 
+[iOS 版本](https://apps.apple.com/us/app/wireguard/id1441195209)
 
+[Android 版本](https://play.google.com/store/apps/details?id=com.wireguard.android)
 
 
 
@@ -162,7 +167,9 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 ## 注册免费域名
 
-正常办理的宽带并没有公网IP，需要打电话到电信申请，申请理由根据个人的实际情况向电信说明，如安装监控等。。。
+正常办理的宽带并没有公网IP，需要打电话到电信申请，申请理由请根据个人的实际情况向电信说明，如安装监控等。。。
+
+
 
 申请到公网IP地址后，IP会隔段时间自动变化，想依靠变化的IP访问NAS不太现实，这时就需要一个简单好记的域名来映射IP地址了。
 
@@ -174,7 +181,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 准备工作：
 
-1. 使用 Github 或者其他的账号登录
+1. 使用 Github 或者其他的账号登录 Duck DNS
 2. 申请一个自己的子域名
 3. 记录下自己的token令牌
 
@@ -184,7 +191,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-而后回到 unRAID ，在“应用市场”中安装这只小黄鸭（Duckdns），并配置好刚刚申请的子域名和令牌。
+回到 unRAID ，在“应用市场”中安装这只小黄鸭（duckdns），并配置好刚刚申请的子域名和令牌。
 
 
 
@@ -202,7 +209,9 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 ![duckdns-ping](../images/blog/2020-03-25-wireguard/duckdns-ping.png)
 
-WireGuard  客户端
+
+
+WireGuard  客户端修改配置文件，将刚刚配置的IP地址，替换为 xxxxx.duckdns.org ，就可以再次连接了。
 
 
 
