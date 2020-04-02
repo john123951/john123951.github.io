@@ -20,11 +20,11 @@
 
 ## 隧道技术简介
 
-隧道技术，是通过互联网，建立一条虚拟链路，以传递数据的方式。
+隧道技术，是指通过互联网，建立一条虚拟链路，以传递数据的方式。
 
 
 
-举个例子，小王和小刘说着不同语言的不同方言，单独来看，两个人虽然都能说话，但却没办法明白对方想表达的意思，如果这时候小王唱起一首童年的旋律，小刘也就秒懂了对方的情谊。这里，歌曲就是依托于声音建立起的“隧道”。
+举个例子，小王和小刘说着不同口音的不同方言，单独来看，两个人虽然都能在当地交流，但却没办法明白对方想表达的意思，这时候如果小王哼起一首童年的旋律，小刘就能秒懂对方的情谊。这里，歌曲就是依托于声音建立起的“隧道”。
 
 
 
@@ -36,9 +36,9 @@
 
 实现的工具也有许多，OpenVPN、ZeroTier 等等，**WireGuard** 则是其中的佼佼者。
 
-WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客户端可以是手机、平板或者公司的办公主机。
 
 
+WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客户端可以是手机、平板或者公司的主机。
 
 使用时，客户端通过“拨号”，接入服务端网络，而后就可以访问内部的服务了。
 
@@ -52,15 +52,15 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-安装过程非常简单，“Community Applications” 中搜索 “WireGuard” 并进行安装。
+首先进行安装，过程非常简单，“Community Applications” 中搜索 “WireGuard” 并进行安装。
 
-**（注意：unRAID至少需要6.8.1，否则无法安装WireGuard，低版本的请自行百度升级）** 
+**（注意：unRAID至少需要6.8.1，否则无法安装WireGuard，低版本的请自行百度升级）** 
 
-**（注意：Community Applications 第三方库，安装教程请参看之前文章）**
+**（注意：关于第三方库 Community Applications，安装教程请参看往期文章）**
 
 
 
-![install.png](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\install.png)
+![install.png](../images/blog/2020-03-25-wireguard/install.png)
 
 
 
@@ -68,7 +68,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 ## 配置 WireGuard（创建用户）
 
-![wireguard-setting.png](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\wireguard-setting.png)
+![wireguard-setting.png](../images/blog/2020-03-25-wireguard/wireguard-setting.png)
 
 
 
@@ -84,9 +84,9 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-![wireguard-setting-genkey.png](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\wireguard-setting-genkey.png)
+![wireguard-setting-genkey.png](../images/blog/2020-03-25-wireguard/wireguard-setting-genkey.png)
 
-![wireguard-setting-autorun.png](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\wireguard-setting-autorun.png)
+![wireguard-setting-autorun.png](../images/blog/2020-03-25-wireguard/wireguard-setting-autorun.png)
 
 
 
@@ -100,7 +100,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-![wireguard-setting-peer.png](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\wireguard-setting-peer.png)
+![wireguard-setting-peer.png](../images/blog/2020-03-25-wireguard/wireguard-setting-peer.png)
 
 
 
@@ -122,7 +122,7 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 
 
-![wireguard-direction](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\wireguard-direction.png)
+![wireguard-direction](../images/blog/2020-03-25-wireguard/wireguard-direction.png)
 
 
 
@@ -130,7 +130,7 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 
 
-![wireguard-config](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\wireguard-config.png)
+![wireguard-config](../images/blog/2020-03-25-wireguard/wireguard-config.png)
 
 
 
@@ -148,7 +148,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![wireguard-windows](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\wireguard-windows.png)
+![wireguard-windows](../images/blog/2020-03-25-wireguard/wireguard-windows.png)
 
 
 
@@ -180,7 +180,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![duckdns-install](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\duckdns-install.png)
+![duckdns-install](../images/blog/2020-03-25-wireguard/duckdns-install.png)
 
 
 
@@ -188,11 +188,11 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![unraid-duckdns-install](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\unraid-duckdns-install.png)
+![unraid-duckdns-install](../images/blog/2020-03-25-wireguard/unraid-duckdns-install.png)
 
 
 
-![unraid-duckdns-config](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\unraid-duckdns-config.png)
+![unraid-duckdns-config](../images/blog/2020-03-25-wireguard/unraid-duckdns-config.png)
 
 
 
@@ -200,7 +200,9 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![duckdns-ping](D:\codes\john123951.github.io\images\blog\2020-03-25-wireguard\duckdns-ping.png)
+![duckdns-ping](../images/blog/2020-03-25-wireguard/duckdns-ping.png)
+
+WireGuard  客户端
 
 
 
