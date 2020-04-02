@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 自建家用NAS计划 ---- 【统一认证】，让NAS体验上升一个台阶
+title: 【统一认证】，让NAS体验上升一个台阶
 categories: [NAS, ldap, docker, 自建家用NAS计划]
 description: some word here
 keywords: keyword1, keyword2
 ---
 
-写在前面
+## 写在前面
 今天是周末，隔离在家也没事干，继续来分享如何提升NAS体验。
 
 本文的主要目的有两个【统一入口】和【统一认证】。

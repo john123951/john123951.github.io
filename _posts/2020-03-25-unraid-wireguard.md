@@ -1,4 +1,10 @@
-# 隧道技术，随时随地接入家庭内网
+---
+layout: post
+title: 隧道技术，随时随地接入家庭内网
+categories: [NAS, ldap, docker, 自建家用NAS计划]
+description: some word here
+keywords: keyword1, keyword2
+---
 
 ## 写在前面
 
