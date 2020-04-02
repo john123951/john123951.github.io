@@ -4,6 +4,7 @@ title: 隧道技术，随时随地接入家庭内网
 categories: [NAS, VPN, wireguard, 自建家用NAS计划]
 description: some word here
 keywords: keyword1, keyword2
+typora-root-url: ../../john123951.github.io
 ---
 
 ## 写在前面
