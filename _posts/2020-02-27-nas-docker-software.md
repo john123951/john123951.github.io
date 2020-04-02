@@ -17,9 +17,9 @@ keywords: keyword1, keyword2
 ## 总体设计和使用体验
 先看一下总体设计与最终效果。
 
-[!nas_docker_software_simple](../images/blog/2020-02-27-docker-software/nas_docker_software_simple.jpg)
+![nas_docker_software_simple](/images/blog/2020-02-27-docker-software/nas_docker_software_simple.jpg)
 
-[!heimdall_dashboard](../images/blog/2020-02-27-docker-software/heimdall_dashboard.png)
+![heimdall_dashboard](/images/blog/2020-02-27-docker-software/heimdall_dashboard.png)
 
 
 ### 说说我的使用体验
@@ -62,7 +62,7 @@ keywords: keyword1, keyword2
 
 先看个总览，整个系统的搭建列表。。。 
 
-[!​服务列表](../images/blog/2020-02-27-docker-software/unRAID_docker_list.png)
+![​服务列表](/images/blog/2020-02-27-docker-software/unRAID_docker_list.png)
 
 
 作者目前使用的是unRAID，所以本文就已unRAID进行演示说明，
@@ -89,7 +89,7 @@ keywords: keyword1, keyword2
 
 配置说明：【MYSQL_ROOT_PASSWORD】项设置为数据库root用户密码，其他保持默认。
 
-[mariadbmariadb]
+![mariadb](/images/blog/2020-02-27-docker-software/mariadb.png)
 
 ### nextcloud
 > nextcloud属于文件私有云，搭建一个自己的云盘。
@@ -100,10 +100,10 @@ keywords: keyword1, keyword2
 
 配置说明：【/data】目录配置为所有用户保存文件的根目录，也可以像作者一样单独配置某用户的目录，例如【/data/sweet】配置为【/mnt/user/personal/homes/sweet/】，其他保持默认。
 
-[nextcloud](../images/blog/2020-02-27-docker-software/nextcloud.png)
+![nextcloud](/images/blog/2020-02-27-docker-software/nextcloud.png)
 界面演示：
 
-[界面演示](../images/blog/2020-02-27-docker-software/nextcloud_preview.png)
+![界面演示](/images/blog/2020-02-27-docker-software/nextcloud_preview.png)
 
 ### jellyfin
 > jellyfin是一款开源的影音播放软件，最有用的是根据影片信息，自己从网上下载回来影片海报。
@@ -114,10 +114,10 @@ keywords: keyword1, keyword2
 
 配置说明：【/movies】目录配置为自己的影片库，其他保持默认。
 
-[jellyfin](../images/blog/2020-02-27-docker-software/jellyfin.png)
+![jellyfin](/images/blog/2020-02-27-docker-software/jellyfin.png)
 界面演示：
 
-[jellyfin](../images/blog/2020-02-27-docker-software/jellyfin_preview.png)
+![jellyfin](/images/blog/2020-02-27-docker-software/jellyfin_preview.png)
 
 ### aria2
 > aria2是一款下载工具，易于和BaiduExporter及PanDownload等第三方软件集成。
@@ -128,10 +128,10 @@ keywords: keyword1, keyword2
 
 配置说明：【/download】目录配置为下载保存到的文件夹，【SECRET】配置为RPC秘钥，其他保持默认。
 
-[aria2](../images/blog/2020-02-27-docker-software/aria2.png)
+![aria2](/images/blog/2020-02-27-docker-software/aria2.png)
 界面演示：
 
-[aria2](../images/blog/2020-02-27-docker-software/aria2_preview.png)
+![aria2](/images/blog/2020-02-27-docker-software/aria2_preview.png)
 
 ### qBittorrent
 > qBittorrent是一款BT下载工具，作者推荐的这个版本屏蔽了迅雷吸血，增加tracker资源服务器。
@@ -142,10 +142,10 @@ keywords: keyword1, keyword2
 
 配置说明：【/downloads】目录配置为下载保存到的文件夹，其他保持默认。
 
-[qbittorrentee](../images/blog/2020-02-27-docker-software/qBittorrent.png)
+![qbittorrentee](/images/blog/2020-02-27-docker-software/qBittorrent.png)
 界面演示：
 
-[qBittorrent](../images/blog/2020-02-27-docker-software/qBittorrent_preview.png)
+![qBittorrent](/images/blog/2020-02-27-docker-software/qBittorrent_preview.png)
 
 ### chronos
 > chronos是一款可以定时执行python脚本的工具，使用者需要会一些简单的python，作者常使用它自动签到、监控商品价格。
@@ -156,10 +156,10 @@ keywords: keyword1, keyword2
 
 配置说明：全部保持默认即可。
 
-[chronos](../images/blog/2020-02-27-docker-software/chronos.png)
+![chronos](/images/blog/2020-02-27-docker-software/chronos.png)
 界面演示：
 
-[chronos](../images/blog/2020-02-27-docker-software/chronos_preview.png)
+![chronos](/images/blog/2020-02-27-docker-software/chronos_preview.png)
 
 
 ## 尾言

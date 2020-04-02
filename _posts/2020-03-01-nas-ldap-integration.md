@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【统一认证】，让NAS体验上升一个台阶
+title: 统一认证，让NAS体验上升一个台阶
 categories: [NAS, ldap, docker, 自建家用NAS计划]
 description: some word here
 keywords: keyword1, keyword2
