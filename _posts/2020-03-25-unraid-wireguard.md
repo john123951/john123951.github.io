@@ -4,6 +4,7 @@ title: 隧道技术，随时随地接入家庭内网
 categories: [NAS, wireguard, docker, 自建家用NAS计划]
 description: 
 keywords: VPN, wireguard
+typora-root-url: ../../john123951.github.io
 ---
 
 ## 写在前面
@@ -18,7 +19,7 @@ keywords: VPN, wireguard
 
 
 
-![远程访问内网](../images/blog/2020-03-25-wireguard/wireguard-demo.png)
+![远程访问内网](/images/blog/2020-03-25-wireguard/wireguard-demo.png)
 
 
 
@@ -65,7 +66,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-![install.png](../images/blog/2020-03-25-wireguard/install.png)
+![install.png](/images/blog/2020-03-25-wireguard/install.png)
 
 
 
@@ -73,7 +74,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 ## 配置 WireGuard（创建用户）
 
-![wireguard-setting.png](../images/blog/2020-03-25-wireguard/wireguard-setting.png)
+![wireguard-setting.png](/images/blog/2020-03-25-wireguard/wireguard-setting.png)
 
 
 
@@ -89,9 +90,9 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-![wireguard-setting-genkey.png](../images/blog/2020-03-25-wireguard/wireguard-setting-genkey.png)
+![wireguard-setting-genkey.png](/images/blog/2020-03-25-wireguard/wireguard-setting-genkey.png)
 
-![wireguard-setting-autorun.png](../images/blog/2020-03-25-wireguard/wireguard-setting-autorun.png)
+![wireguard-setting-autorun.png](/images/blog/2020-03-25-wireguard/wireguard-setting-autorun.png)
 
 
 
@@ -105,7 +106,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 
 
 
-![wireguard-setting-peer.png](../images/blog/2020-03-25-wireguard/wireguard-setting-peer.png)
+![wireguard-setting-peer.png](/images/blog/2020-03-25-wireguard/wireguard-setting-peer.png)
 
 
 
@@ -129,7 +130,7 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 
 
-![wireguard-direction](../images/blog/2020-03-25-wireguard/wireguard-direction.png)
+![wireguard-direction](/images/blog/2020-03-25-wireguard/wireguard-direction.png)
 
 
 
@@ -137,7 +138,7 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 
 
-![wireguard-config](../images/blog/2020-03-25-wireguard/wireguard-config.png)
+![wireguard-config](/images/blog/2020-03-25-wireguard/wireguard-config.png)
 
 
 
@@ -157,7 +158,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![wireguard-windows](../images/blog/2020-03-25-wireguard/wireguard-windows.png)
+![wireguard-windows](/images/blog/2020-03-25-wireguard/wireguard-windows.png)
 
 
 
@@ -193,7 +194,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![duckdns-install](../images/blog/2020-03-25-wireguard/duckdns-install.png)
+![duckdns-install](/images/blog/2020-03-25-wireguard/duckdns-install.png)
 
 
 
@@ -201,11 +202,11 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![unraid-duckdns-install](../images/blog/2020-03-25-wireguard/unraid-duckdns-install.png)
+![unraid-duckdns-install](/images/blog/2020-03-25-wireguard/unraid-duckdns-install.png)
 
 
 
-![unraid-duckdns-config](../images/blog/2020-03-25-wireguard/unraid-duckdns-config.png)
+![unraid-duckdns-config](/images/blog/2020-03-25-wireguard/unraid-duckdns-config.png)
 
 
 
@@ -213,7 +214,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 
 
-![duckdns-ping](../images/blog/2020-03-25-wireguard/duckdns-ping.png)
+![duckdns-ping](/images/blog/2020-03-25-wireguard/duckdns-ping.png)
 
 
 
