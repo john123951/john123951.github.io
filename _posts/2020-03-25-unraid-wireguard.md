@@ -22,14 +22,11 @@ typora-root-url: ../../john123951.github.io
 
 举个例子，小王和小刘说着不同口音的不同方言，单独来看，两个人虽然都能在当地交流，但却没办法明白对方想表达的意思，这时候如果小王哼起一首童年的旋律，小刘就能秒懂对方的情谊。这里，歌曲就是依托于声音建立起的“隧道”。
 
-理解了原理，下面要做的就简单多了。
-
+理解了原理，下面要做的就简单多了。  
 建立一条“隧道”，这条隧道基于互联网，可以使我们获取家庭内部IP地址，随时访问内部服务。
 
-实现的工具也有许多，OpenVPN、ZeroTier 等等，**WireGuard** 则是其中的佼佼者。
-
-WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客户端可以是手机、平板或者公司的主机。
-
+实现的工具也有许多，OpenVPN、ZeroTier 等等，**WireGuard** 则是其中的佼佼者。  
+WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客户端可以是手机、平板或者公司的主机。  
 使用时，客户端通过“拨号”，接入服务端网络，而后就可以访问内部的服务了。
 
 
@@ -84,28 +81,24 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 这里特别说明一下，
 
-PrivateKey 和 PublicKey 表示身份秘钥，可以使用unRAID的界面生成，然后填写到这里，注意密钥是成对生成的，每次都要将 Pri 和 Pub 同时记录下来。
-
-Endpoint 表示需要连接的服务器地址，也就是NAS的公网IP地址（下文会使用域名代替IP）。
-
-AllowedIPs 表示需要将哪些地址转发到VPN，不确定的朋友直接用（**192.168.0.0/16, 10.0.0.0/8**）。
-
+PrivateKey 和 PublicKey 表示身份秘钥，可以使用unRAID的界面生成，然后填写到这里，注意密钥是成对生成的，每次都要将 Pri 和 Pub 同时记录下来。  
+Endpoint 表示需要连接的服务器地址，也就是NAS的公网IP地址（下文会使用域名代替IP）。  
+AllowedIPs 表示需要将哪些地址转发到VPN，不确定的朋友直接用（**192.168.0.0/16, 10.0.0.0/8**）。  
 PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客户端就配置多少。
 
 第三步，开启连接，成功接入内网。
 
 ![wireguard-windows](/images/blog/2020-03-25-wireguard/wireguard-windows.png)
 
-手机端的配置方式与 Win平台大体相同，这里就不做详细介绍了。
+手机端的配置方式与 Win平台大体相同，这里就不做详细介绍了，配置成功后，手机就可以远程管理NAS了。
 
 [iOS 版本](https://apps.apple.com/us/app/wireguard/id1441195209)
 [Android 版本](https://play.google.com/store/apps/details?id=com.wireguard.android)
 
 
 ## 注册免费域名
-正常办理的宽带并没有公网IP，需要打电话到电信申请，申请理由请根据个人的实际情况向电信说明，如安装监控等。。。
-
-申请到公网IP地址后，IP会隔段时间自动变化，想依靠变化的IP访问NAS不太现实，这时就需要一个简单好记的域名来映射IP地址了。
+正常办理的宽带并没有公网IP，需要打电话到电信申请，申请理由请根据个人的实际情况向电信说明，如安装监控等。。。  
+申请到公网IP地址后，IP会隔段时间自动变化，想依靠变化的IP访问NAS不太现实，这时就需要一个简单好记的域名来映射IP地址了，没错，开始白嫖。。
 
 [Duck DNS](https://www.duckdns.org/) 是一项免费DNS解析服务，使用 Duck DNS 可以为我们省下购买域名的费用（虽然域名也不贵）。（https://www.duckdns.org/）
 
@@ -116,7 +109,7 @@ PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客
 
 ![duckdns-install](/images/blog/2020-03-25-wireguard/duckdns-install.png)
 
-回到 unRAID ，在“应用市场”中安装这只小黄鸭（duckdns），并配置好刚刚申请的子域名和令牌。
+以上准备工作都完成后，回到 unRAID ，在“应用市场”中安装这只小黄鸭（duckdns），并配置好刚刚申请的子域名和令牌。
 
 ![unraid-duckdns-install](/images/blog/2020-03-25-wireguard/unraid-duckdns-install.png)
 
@@ -130,5 +123,5 @@ WireGuard 客户端修改配置文件，将刚刚配置的IP地址，替换为 x
 
 
 ## 总结
-本文介绍的使用WireGuard反向接入内网技术，作者已稳定使用了半年以上，这篇文章，希望能给大家提供一个新思路，后续我会继续分享智能家庭相关的内容，请大家持续关注我。
+本文介绍的反向接入内网技术，作者已稳定使用了半年以上，希望能通过本篇文章，给大家提供一个新思路，有问题大家可以给我留言讨论。
 
