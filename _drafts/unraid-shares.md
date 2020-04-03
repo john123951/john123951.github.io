@@ -57,3 +57,5 @@ UnRAID默认将VM和Docker存储在阵列中，这样做可以保证数据的安
 
 ![share_appdata](../images/blog/2020-02-09-unraid-shares/share_appdata.png)
 
+### 解决精简版无法访问网络共享
+> https://blog.csdn.net/Moabi/article/details/82957259
