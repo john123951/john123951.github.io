@@ -48,7 +48,7 @@ WireGuard 分为“服务端”与“客户端”，服务端部署在NAS，客�
 安装完成后，首先进行配置，点击："Settings" -- "VPN Manager" 进入管理。
 
 第一步，填写WireGuard名字。  
-第二步，点击右侧按钮生成服务端秘钥。  
+第二步，点击右侧按钮生成服务端密钥。  
 第三步，保持 "EndPoint" 使用默认的 51820 端口。  
 第四步，将服务设置为开机自动启动，并立即启用服务。
 
@@ -75,13 +75,13 @@ WireGuard 客户端支持 Windows、Linux、Android、iOS，首先介绍 Win10 �
 
 ![wireguard-direction](/images/blog/2020-03-25-wireguard/wireguard-direction.png)
 
-第二步，配置秘钥和连接地址。
+第二步，配置密钥和连接地址。
 
 ![wireguard-config](/images/blog/2020-03-25-wireguard/wireguard-config.png)
 
 这里特别说明一下，
 
-PrivateKey 和 PublicKey 表示身份秘钥，可以使用unRAID的界面生成，然后填写到这里，注意密钥是成对生成的，每次都要将 Pri 和 Pub 同时记录下来。  
+PrivateKey 和 PublicKey 表示身份密钥，可以使用unRAID的界面生成，然后填写到这里，注意密钥是成对生成的，每次都要将 Pri 和 Pub 同时记录下来。  
 Endpoint 表示需要连接的服务器地址，也就是NAS的公网IP地址（下文会使用域名代替IP）。  
 AllowedIPs 表示需要将哪些地址转发到VPN，不确定的朋友直接用（**192.168.0.0/16, 10.0.0.0/8**）。  
 PersistentKeepalive 需要与服务器保持一致，服务器配置多少，客户端就配置多少。
