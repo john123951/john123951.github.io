@@ -2,8 +2,8 @@
 layout: post
 title: 谈谈如何使用docker，搭建一台“群晖”
 categories: [NAS, unRAID, docker, 自建家用NAS计划]
-description: some word here
-keywords: keyword1, keyword2
+description:
+keywords: docker, 群晖, NAS
 ---
 
 ## 写在前面
