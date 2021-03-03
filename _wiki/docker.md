@@ -11,12 +11,20 @@ keywords: docker
 ```
 # 启动所有容器
 docker ps --all --format "{{.Names}}" |xargs docker start
+
+# 查看容器占用磁盘空间
+docker system df -v
+
 ```
 {% endraw %}
 
 
 ### 镜像操作
 ```
+# 清查无用的镜像
+docker image ls -f dangling=true
+docker image prune
+
 ```
 
 
